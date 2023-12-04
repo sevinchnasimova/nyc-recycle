@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind utilities;
+
+.recycling-bin-card {
+  @apply bg-theme flex flex-col items-center gap-4 p-8 rounded-md;
+}
+
+.recycling-bin-img {
+  @apply h-32 w-32 object-contain;
+}
+.quick-facts-box {
+  @apply border-4 border-theme p-8;
+}
+.quick-facts-list {
+  @apply list-disc pl-8 pt-8;
+}
