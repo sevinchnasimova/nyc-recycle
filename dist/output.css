@@ -685,7 +685,8 @@ video {
 }
 
 .bg-theme {
-  background-color: #;
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 243 212 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -748,7 +749,8 @@ video {
   align-items: center;
   gap: 1rem;
   border-radius: 0.375rem;
-  background-color: #;
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 243 212 / var(--tw-bg-opacity));
   padding: 2rem;
 }
 
@@ -761,7 +763,8 @@ video {
 
 .quick-facts-box {
   border-width: 4px;
-  border-color: #;
+  --tw-border-opacity: 1;
+  border-color: rgb(224 243 212 / var(--tw-border-opacity));
   padding: 2rem;
 }
 
