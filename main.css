@@ -14,3 +14,9 @@
 .quick-facts-list {
   @apply list-disc pl-8 pt-8;
 }
+.game-bin-box {
+  @apply h-80 w-64 border-4 border-black bg-contain bg-center;
+}
+.over {
+  @apply border-8 border-dotted;
+}

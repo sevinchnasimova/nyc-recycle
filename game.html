@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./dist/output.css" rel="stylesheet" />
+    <script type="module">
+      window.addEventListener("load", async function (event) {
+        const gameItems = await fetch("./game.json").then((response) =>
+          response.json()
+        );
+        console.log(gameItems);
+        let gameItem;
+        const pastItems = new Set();
+        function chooseItem() {
+          const itemsToChose = gameItems.filter(
+            (item) => !pastItems.has(item.name)
+          );
+          if (itemsToChose.length == 0) {
+            return false;
+          }
+          const randomIndex = Math.floor(Math.random() * itemsToChose.length);
+          gameItem = itemsToChose[randomIndex];
+          pastItems.add(gameItem["name"]);
+          document.getElementById("item-img").src = gameItem["img"];
+        }
+        chooseItem();
+        function handleBoxDragStart(e) {
+          this.style.opacity = "0.4";
+        }
+        function handleBoxDragEnd(e) {
+          this.style.opacity = "1";
+          document
+            .querySelectorAll(".game-bin-box")
+            .forEach((el) => el.classList.remove("over"));
+        }
+        const draggableComponent = document.getElementById("item");
+        draggableComponent.addEventListener("dragstart", handleBoxDragStart);
+        draggableComponent.addEventListener("dragend", handleBoxDragEnd);
+        function handleDragOver(e) {
+          e.preventDefault();
+          return false;
+        }
+        function handleDragEnter(e) {
+          this.classList.add("over");
+        }
+        function handleDragLeave(e) {
+          this.classList.remove("over");
+        }
+        function handleDrop(e) {
+          e.stopPropagation();
+          console.log(e);
+          const selectedBin = e.target.id.split("-")[0];
+          console.log(
+            `gameItem bin ${gameItem["bin"]}, selectedBin ${selectedBin}`
+          );
+          if (selectedBin == gameItem["bin"]) {
+            console.log("correct");
+          } else {
+            console.log("incorrect");
+          }
+          next();
+          return false;
+        }
+        function next() {
+          if (chooseItem()) {
+            console.log(gameItem);
+          } else {
+            console.log("game over");
+          }
+        }
+        const gameBoxes = document.querySelectorAll(".game-bin-box");
+        gameBoxes.forEach(function (boxElement) {
+          boxElement.addEventListener("dragover", handleDragOver);
+          boxElement.addEventListener("dragenter", handleDragEnter);
+          boxElement.addEventListener("dragleave", handleDragLeave);
+          boxElement.addEventListener("drop", handleDrop);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="flex flex-col text-center gap-4 m-8">
+      <p class="text-6xl font-bold">Recycling Bin Game</p>
+      <p>Drag the item to the corresponding recycling bin!</p>
+    </div>
+    <div class="flex flex-col align-middle">
+      <div
+        id="item"
+        class="h-32 w-32 bg-black m-16 cursor-pointer"
+        draggable="true"
+      >
+        <img id="item-img" src="" />
+      </div>
+      <div class="flex justify-around">
+        <div
+          class="game-bin-box"
+          style="
+            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+          "
+          id="blue-bin"
+        ></div>
+        <div
+          class="game-bin-box"
+          style="
+            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+          "
+          id="black-bin"
+        ></div>
+        <div
+          class="game-bin-box"
+          style="
+            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+          "
+          id="brown-bin"
+        ></div>
+        <div
+          class="game-bin-box"
+          style="
+            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+          "
+          id="green-bin"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>

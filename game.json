@@ -1,0 +1,12 @@
+[
+  {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Drinkware.jpg",
+    "name": "glass cup",
+    "bin": "blue"
+  },
+  {
+    "img": "https://www.macao.ubuy.com/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvOTF0VmpEcEVadUwuX0FDX1NMMTUwMF8uanBn.jpg",
+    "name": "cardboard",
+    "bin": "green"
+  }
+]
