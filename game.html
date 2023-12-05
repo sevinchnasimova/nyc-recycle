@@ -84,15 +84,15 @@
       <p class="text-6xl font-bold">Recycling Bin Game</p>
       <p>Drag the item to the corresponding recycling bin!</p>
     </div>
-    <div class="flex flex-col align-middle">
+    <div class="flex flex-col gap-32 items-center">
       <div
         id="item"
-        class="h-32 w-32 bg-black m-16 cursor-pointer"
+        class="h-32 w-32 border-2 cursor-pointer flex items-center"
         draggable="true"
       >
-        <img id="item-img" src="" />
+        <img id="item-img" class="object-cover" src="" />
       </div>
-      <div class="flex justify-around">
+      <div class="flex gap-24">
         <div
           class="game-bin-box"
           style="
