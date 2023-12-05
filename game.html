@@ -24,7 +24,17 @@
           pastItems.add(gameItem["name"]);
           document.getElementById("item-img").src = gameItem["img"];
         }
-        chooseItem();
+        function startGame() {
+          chooseItem();
+          document.getElementById("game-items").classList.remove("hidden");
+        }
+        function handleStartButtonClick(e) {
+          document.getElementById("start-button").classList.add("hidden");
+          startGame();
+        }
+        document
+          .getElementById("start-button")
+          .addEventListener("click", handleStartButtonClick);
         function handleBoxDragStart(e) {
           this.style.opacity = "0.4";
         }
@@ -84,43 +94,53 @@
       <p class="text-6xl font-bold">Recycling Bin Game</p>
       <p>Drag the item to the corresponding recycling bin!</p>
     </div>
-    <div class="flex flex-col gap-32 items-center">
-      <div
-        id="item"
-        class="h-32 w-32 border-2 cursor-pointer flex items-center"
-        draggable="true"
-      >
-        <img id="item-img" class="object-cover" src="" />
+    <div id="game" class="flex flex-col gap-32 items-center">
+      <div>
+        <button
+          id="start-button"
+          class="border-2 border-black p-4 rounded-md bg-theme"
+        >
+          Start game
+        </button>
       </div>
-      <div class="flex gap-24">
+      <div id="game-items" class="hidden flex flex-col gap-32 items-center">
         <div
-          class="game-bin-box"
-          style="
-            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-          "
-          id="blue-bin"
-        ></div>
-        <div
-          class="game-bin-box"
-          style="
-            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-          "
-          id="black-bin"
-        ></div>
-        <div
-          class="game-bin-box"
-          style="
-            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-          "
-          id="brown-bin"
-        ></div>
-        <div
-          class="game-bin-box"
-          style="
-            background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-          "
-          id="green-bin"
-        ></div>
+          id="item"
+          class="h-32 w-32 border-2 cursor-pointer flex items-center"
+          draggable="true"
+        >
+          <img id="item-img" class="object-cover" src="" />
+        </div>
+        <div class="flex gap-24">
+          <div
+            class="game-bin-box"
+            style="
+              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+            "
+            id="blue-bin"
+          ></div>
+          <div
+            class="game-bin-box"
+            style="
+              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+            "
+            id="black-bin"
+          ></div>
+          <div
+            class="game-bin-box"
+            style="
+              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+            "
+            id="brown-bin"
+          ></div>
+          <div
+            class="game-bin-box"
+            style="
+              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
+            "
+            id="green-bin"
+          ></div>
+        </div>
       </div>
     </div>
   </body>
