@@ -58,6 +58,15 @@
         function handleNextButtonClick(e) {
           document.getElementById("draggable-item").classList.remove("hidden");
           document.getElementById("next-button").classList.add("hidden");
+          document.getElementById("result-container").classList.add("hidden");
+          const binElements = document.getElementsByClassName("game-bin-box");
+          Array.prototype.forEach.call(binElements, (el) =>
+            el.classList.remove(
+              "border-dotted",
+              "border-red-400",
+              "border-green-400"
+            )
+          );
           document.getElementById("item-in-bin").remove();
           statusText = "";
           setStatusText();
@@ -107,15 +116,20 @@
             console.log("correct");
             statusText = `Yes! ${gameItem["name"]} belongs in the ${gameItem["bin"]} bin`;
             numCorrect += 1;
+            selectedBin.classList.add("border-dotted", "border-green-400");
           } else {
             statusText = `No, ${gameItem["name"]} belongs in the ${gameItem["bin"]} bin`;
             console.log("incorrect");
+            selectedBin.classList.add("border-dotted", "border-red-400");
+            document
+              .getElementById(`${gameItem["bin"]}-bin`)
+              .classList.add("border-dotted", "border-green-400");
           }
           const imgInBin = document.createElement("img");
           const imgContainer = document.createElement("div");
           imgInBin.src = gameItem["img"];
-          imgInBin.classList.add("object-cover");
-          imgContainer.classList.add("h-32", "w-32", "border-2");
+          imgInBin.classList.add("object-cover", "h-32", "w-32", "border-2");
+          // imgContainer.classList.add("h-32", "w-32", );
           imgContainer.id = "item-in-bin";
           imgContainer.appendChild(imgInBin);
           selectedBin.appendChild(imgContainer);
@@ -123,12 +137,18 @@
           setScoreBoard();
           document.getElementById("draggable-item").classList.add("hidden");
           document.getElementById("next-button").classList.remove("hidden");
+          document
+            .getElementById("result-container")
+            .classList.remove("hidden");
         }
         function next() {
           if (chooseItem()) {
             console.log(gameItem);
           } else {
             document.getElementById("draggable-item").classList.add("hidden");
+            document
+              .getElementById("result-container")
+              .classList.remove("hidden");
             statusText = "Game over, thanks for playing!";
             setStatusText();
           }
@@ -149,36 +169,39 @@
       <p class="text-6xl font-bold">Recycling Bin Game</p>
       <p>Drag the item to the corresponding recycling bin!</p>
     </div>
-    <div id="game" class="flex flex-col gap-32 items-center">
-      <div>
-        <button
-          id="start-button"
-          class="border-2 border-black p-4 rounded-md bg-theme"
-        >
-          Start game
-        </button>
-      </div>
-      <div id="game-items" class="hidden flex flex-col gap-32 items-center">
+    <div id="game" class="flex flex-col gap-8 items-center">
+      <button
+        id="start-button"
+        class="border-2 border-black p-4 rounded-md bg-theme"
+      >
+        Start game
+      </button>
+      <div id="game-items" class="hidden flex flex-col gap-4 items-center">
         <div id="game-score">
-          <p>
+          <p class="text-2xl">
             Score : <span id="num-correct"></span>/<span id="num-tried"></span>
           </p>
         </div>
         <div
           id="draggable-item"
-          class="h-32 w-32 border-2 cursor-pointer flex items-center"
+          class="cursor-pointer flex items-center"
           draggable="true"
         >
-          <img id="item-img" class="object-cover" src="" />
+          <img id="item-img" class="h-32 w-32 border-2 object-cover" src="" />
         </div>
-        <div id="status-text"><p></p></div>
-        <button
-          id="next-button"
-          class="border-2 border-black p-4 rounded-md bg-theme hidden"
+        <div
+          id="result-container"
+          class="hidden h-32 flex flex-col justify-around items-center"
         >
-          Next
-        </button>
-        <div class="flex gap-24">
+          <div id="status-text"><p></p></div>
+          <button
+            id="next-button"
+            class="border-2 border-black p-4 rounded-md bg-theme hidden"
+          >
+            Next
+          </button>
+        </div>
+        <div class="flex gap-24 my-8">
           <div
             class="game-bin-box"
             style="background-image: url('./static/blue_bin.jpg')"
