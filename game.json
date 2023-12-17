@@ -8,5 +8,25 @@
     "img": "https://www.macao.ubuy.com/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvOTF0VmpEcEVadUwuX0FDX1NMMTUwMF8uanBn.jpg",
     "name": "cardboard",
     "bin": "green"
+  },
+  {
+    "img": "https://cdn.supplyclinic.com/uploads/item/preview_image/335458/1-rigid-plastic-box-1000-pkg-all-blue-national-keystone-group-9571485_rqkaw0.jpg",
+    "name": "plastic container",
+    "bin": "blue"
+  },
+  {
+    "img": "https://eu-images.contentstack.com/v3/assets/blt09e5e63517a16184/blt389288c81d67879a/64d6b9609b1368690ed86988/plastic-bag-ban-new-york.jpg?disable=upscale&width=1200&height=630&fit=crop",
+    "name": "plastic bag",
+    "bin": "black"
+  },
+  {
+    "img": "https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/MA_00057645_uqy4xb.jpg",
+    "name": "nuts and bolts",
+    "bin": "blue"
+  },
+  {
+    "img": "https://www.shutterstock.com/image-photo/red-apple-missing-bite-isolated-600nw-234650326.jpg",
+    "name": "apple",
+    "bin": "brown"
   }
 ]

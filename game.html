@@ -11,6 +11,9 @@
         );
         console.log(gameItems);
         let gameItem;
+        let numCorrect = 0;
+        let numTried = 0;
+        let statusText = "";
         const pastItems = new Set();
         function chooseItem() {
           const itemsToChose = gameItems.filter(
@@ -23,11 +26,27 @@
           gameItem = itemsToChose[randomIndex];
           pastItems.add(gameItem["name"]);
           document.getElementById("item-img").src = gameItem["img"];
+          return true;
         }
+
+        function setScoreBoard() {
+          document.getElementById("num-correct").innerHTML = numCorrect;
+          document.getElementById("num-tried").innerHTML = numTried;
+        }
+
+        function setStatusText() {
+          document
+            .getElementById("status-text")
+            .getElementsByTagName("p")[0].innerHTML = statusText;
+        }
+
         function startGame() {
           chooseItem();
+          setScoreBoard();
           document.getElementById("game-items").classList.remove("hidden");
+          document.getElementById("status-text").classList.remove("hidden");
         }
+
         function handleStartButtonClick(e) {
           document.getElementById("start-button").classList.add("hidden");
           startGame();
@@ -35,50 +54,86 @@
         document
           .getElementById("start-button")
           .addEventListener("click", handleStartButtonClick);
+
+        function handleNextButtonClick(e) {
+          document.getElementById("draggable-item").classList.remove("hidden");
+          document.getElementById("next-button").classList.add("hidden");
+          document.getElementById("item-in-bin").remove();
+          statusText = "";
+          setStatusText();
+          next();
+        }
+        document
+          .getElementById("next-button")
+          .addEventListener("click", handleNextButtonClick);
+
         function handleBoxDragStart(e) {
           this.style.opacity = "0.4";
         }
+
         function handleBoxDragEnd(e) {
           this.style.opacity = "1";
           document
             .querySelectorAll(".game-bin-box")
             .forEach((el) => el.classList.remove("over"));
         }
-        const draggableComponent = document.getElementById("item");
+        const draggableComponent = document.getElementById("draggable-item");
         draggableComponent.addEventListener("dragstart", handleBoxDragStart);
         draggableComponent.addEventListener("dragend", handleBoxDragEnd);
+
         function handleDragOver(e) {
           e.preventDefault();
           return false;
         }
+
         function handleDragEnter(e) {
           this.classList.add("over");
         }
+
         function handleDragLeave(e) {
           this.classList.remove("over");
         }
+
         function handleDrop(e) {
           e.stopPropagation();
           console.log(e);
-          const selectedBin = e.target.id.split("-")[0];
+          numTried += 1;
+          const selectedBin = e.target;
+          const selectedBinColor = selectedBin.id.split("-")[0];
           console.log(
-            `gameItem bin ${gameItem["bin"]}, selectedBin ${selectedBin}`
+            `gameItem bin ${gameItem["bin"]}, selectedBin ${selectedBinColor}`
           );
-          if (selectedBin == gameItem["bin"]) {
+          if (selectedBinColor == gameItem["bin"]) {
             console.log("correct");
+            statusText = `Yes! ${gameItem["name"]} belongs in the ${gameItem["bin"]} bin`;
+            numCorrect += 1;
           } else {
+            statusText = `No, ${gameItem["name"]} belongs in the ${gameItem["bin"]} bin`;
             console.log("incorrect");
           }
-          next();
-          return false;
+          const imgInBin = document.createElement("img");
+          const imgContainer = document.createElement("div");
+          imgInBin.src = gameItem["img"];
+          imgInBin.classList.add("object-cover");
+          imgContainer.classList.add("h-32", "w-32", "border-2");
+          imgContainer.id = "item-in-bin";
+          imgContainer.appendChild(imgInBin);
+          selectedBin.appendChild(imgContainer);
+          setStatusText();
+          setScoreBoard();
+          document.getElementById("draggable-item").classList.add("hidden");
+          document.getElementById("next-button").classList.remove("hidden");
         }
         function next() {
           if (chooseItem()) {
             console.log(gameItem);
           } else {
-            console.log("game over");
+            document.getElementById("draggable-item").classList.add("hidden");
+            statusText = "Game over, thanks for playing!";
+            setStatusText();
           }
         }
+
         const gameBoxes = document.querySelectorAll(".game-bin-box");
         gameBoxes.forEach(function (boxElement) {
           boxElement.addEventListener("dragover", handleDragOver);
@@ -104,40 +159,44 @@
         </button>
       </div>
       <div id="game-items" class="hidden flex flex-col gap-32 items-center">
+        <div id="game-score">
+          <p>
+            Score : <span id="num-correct"></span>/<span id="num-tried"></span>
+          </p>
+        </div>
         <div
-          id="item"
+          id="draggable-item"
           class="h-32 w-32 border-2 cursor-pointer flex items-center"
           draggable="true"
         >
           <img id="item-img" class="object-cover" src="" />
         </div>
+        <div id="status-text"><p></p></div>
+        <button
+          id="next-button"
+          class="border-2 border-black p-4 rounded-md bg-theme hidden"
+        >
+          Next
+        </button>
         <div class="flex gap-24">
           <div
             class="game-bin-box"
-            style="
-              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-            "
+            style="background-image: url('./static/blue_bin.jpg')"
             id="blue-bin"
           ></div>
           <div
             class="game-bin-box"
-            style="
-              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-            "
+            style="background-image: url('./static/black_bin.jpg')"
             id="black-bin"
           ></div>
           <div
             class="game-bin-box"
-            style="
-              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-            "
+            style="background-image: url('./static/brown_bin.jpg')"
             id="brown-bin"
           ></div>
           <div
             class="game-bin-box"
-            style="
-              background-image: url(https://images.rawpixel.com/image_png_1300/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L3JtNjUzLWVsZW1lbnQtMTM3ZC1lbnZpcm9ubWVudC5wbmc.png);
-            "
+            style="background-image: url('./static/green_bin.jpg')"
             id="green-bin"
           ></div>
         </div>
