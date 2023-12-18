@@ -6,7 +6,7 @@
 }
 
 .recycling-bin-img {
-  @apply h-32 w-32 object-contain;
+  @apply h-64 w-32 object-cover;
 }
 .quick-facts-box {
   @apply border-4 border-theme p-8;
