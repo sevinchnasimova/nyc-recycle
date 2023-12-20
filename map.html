@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <link href="./dist/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="text/javascript">
+      window.addEventListener("load", async function (event) {
+        var map = L.map("map").setView([40.73, -73.94], 12);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map);
+        var popup = L.marker([40.73, -73.94])
+          .addTo(map)
+          .bindPopup("<p>hello world</p>");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="flex flex-col text-center font-mono">
+      <p class="text-4xl font-bold m-8">Recycling Centers in NYC</p>
+      <div id="map" class="h-[64rem] mx-8"></div>
+    </div>
+  </body>
+</html>
