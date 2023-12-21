@@ -17,22 +17,47 @@
     ></script>
     <script type="text/javascript">
       window.addEventListener("load", async function (event) {
+        const locations = await fetch("./locations.json").then((resp) =>
+          resp.json()
+        );
         var map = L.map("map").setView([40.73, -73.94], 12);
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 19,
           attribution:
             '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         }).addTo(map);
-        var popup = L.marker([40.73, -73.94])
-          .addTo(map)
-          .bindPopup("<p>hello world</p>");
+        locations.forEach((location) => {
+          // const popUpElement = document
+          // .getElementById("popup")
+          // .content.cloneNode(true);
+          // popUpElement.getElementById("name").innerHTML = location["name"];
+          // popUpElement.getElementById("address").innerHTML =
+          // location["address"];
+          // popUpElement.getElementById("phone").innerHTML = location["phone"];
+          L.marker([location["latitude"], location["longitude"]])
+            .addTo(map)
+            .bindPopup(
+              `<b>${location["name"]}</b><br>${location["description"]}<br>${location["address"]}<br>${location["phone"]}`
+            );
+        });
       });
     </script>
   </head>
-  <body>
+  <body class="mx-8">
     <div class="flex flex-col text-center font-mono">
-      <p class="text-4xl font-bold m-8">Recycling Centers in NYC</p>
-      <div id="map" class="h-[64rem] mx-8"></div>
+      <div class="my-8 flex items-center justify-between">
+        <a href="./index.html" class="w-64 text-2xl text-left"><- go back</a>
+        <p class="text-4xl font-bold m-auto">Recycling Centers in NYC</p>
+        <p class="w-64 invisible">fake element</p>
+      </div>
+      <div id="map" class="h-[64rem]"></div>
+      <!-- <template id="popup"> -->
+      <!-- <div> -->
+      <!-- <p id="name" class="font-bold"></p> -->
+      <!-- <p id="address"></p> -->
+      <!-- <p id="phone"></p> -->
+      <!-- </div> -->
+      <!-- </template> -->
     </div>
   </body>
 </html>

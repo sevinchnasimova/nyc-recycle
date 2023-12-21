@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Metropolitan Recycling",
+    "description": "Metropolitan recycling offers a variety of recycling services to help businesses reduce their waste and carbon footprint. Multiple size containers and pick-up schedules are available to institutions and businesses.",
+    "address": "847 Shepherd Ave, Brooklyn, NY 11208",
+    "phone": "(718) 257-8584",
+    "latitude": 40.66369,
+    "longitude": -73.87575
+  },
+  {
+    "name": "The Environmental Recycling of NY",
+    "description": "The Environmental Recycling of NY is a Bottle and Can Redemption center in Brooklyn. They accept all aluminum, glass and plastic containers and will schedule a pickup if you have more than 2000 containers.",
+    "address": "580 Degraw St, Brooklyn, NY 11217",
+    "phone": "(646) 820-3050",
+    "latitude": 40.67941,
+    "longitude": -73.9842
+  },
+  {
+    "name": "Scholes Street Recycling",
+    "description": "Scholes Street Recycling is a full service recycling facility with the goal of recycling 100% of everything that goes into their facility. They are a receiver of all types of recycling materials and have an unlimited capacity of baling.",
+    "address": "492 Scholes St, Brooklyn, NY 11237",
+    "phone": "(718) 386-5750",
+    "latitude": 40.71105,
+    "longitude": -73.92769
+  },
+  {
+    "name": "Uwv Recycling",
+    "description": "Uwv Recycling is a Recycling Program that collects donations of gently used clothing and household goods.",
+    "address": "14 Murray Street #207, New York, NY 10007",
+    "phone": "(888) 821-8982",
+    "latitude": 40.71341,
+    "longitude": -74.00826
+  },
+  {
+    "name": "4THBIN",
+    "description": "4THBIN is a certified and accredited secure e-recycling solution provider for over 6,000 businesses across the United States.",
+    "address": "708 3rd Ave 6th fl, New York, NY 10017",
+    "phone": "(646) 747-5985",
+    "latitude": 40.75244,
+    "longitude": -73.97378
+  },
+  {
+    "name": "Boro Park Redemption Center",
+    "description": "Boro Park Redemption Center accepts NYC redeemable bottles. Separate your recyclables by material into clear bags to bring them into this center. They are now offering $0.06 on plastic and can items above 1000 pieces.",
+    "address": "981 McDonald Ave, Brooklyn, NY 11230",
+    "phone": "(718) 854-6156",
+    "latitude": 40.6297646,
+    "longitude": -73.9766421
+  },
+  {
+    "name": "Sure We Can",
+    "description": "Sure We Can is a nonprofit recycling center, community space and sustainability hub in Brooklyn. They have served the community of canners for over 15 years and today it has evolved into a community center that promotes a sustainable urban culture and facilitates an urban economy.",
+    "address": "219 McKibbin St, Brooklyn, NY 11206",
+    "phone": "(347) 463-9257",
+    "latitude": 40.70566240235473,
+    "longitude": -73.93839029026442
+  },
+  {
+    "name": "Walter Electronics Recycling",
+    "description": "Walter Electronics Recycling is a benefit corporation and helps individuals and organizations dispose of their electronics. They safely and responsibly dispose of used electronics and offer zero landfill recycling services which meet the highest environmental standards.",
+    "address": "138 Hinsdale St, Brooklyn, NY 11207",
+    "phone": "(347) 854-9623",
+    "latitude": 40.67479028166547,
+    "longitude": -73.902324027664
+  },
+  {
+    "name": "Computer Recycling",
+    "description": "Computer Recycling is a leading electronic recycling and computer recycling company. They are committed to helping customers dispose of obsolete or unwanted electronic equipment.",
+    "address": "99 Hudson St, New York, NY 10013",
+    "phone": "(646) 536-2110",
+    "latitude": 40.72213299977255,
+    "longitude": -74.01026612766401
+  },
+  {
+    "name": "Queen City Recycling",
+    "description": "Queen City Recycling is a family-owned recycling center for private and commercial local contractors. They can handle all of your recycling, rubbish removal, and container service needs. They accept all construction and demolition debris.",
+    "address": "19 Cliff St, New York, NY 10038",
+    "latitude": 40.708438966566035,
+    "longitude": -74.00550583208265
+  }
+]
