@@ -20,7 +20,7 @@
     "bin": "black"
   },
   {
-    "img": "https://res.cloudinary.com/dk-find-out/image/upload/q_70,c_pad,w_1200,h_630,f_auto/MA_00057645_uqy4xb.jpg",
+    "img": "https://images.squarespace-cdn.com/content/v1/5d76777e21f9b80e4eb46361/1595359279925-UT6Q9JTGJ7QHRSMFSISR/news-boltsnuts-nowstockd.jpg",
     "name": "nuts and bolts",
     "bin": "blue"
   },
@@ -28,5 +28,25 @@
     "img": "https://www.shutterstock.com/image-photo/red-apple-missing-bite-isolated-600nw-234650326.jpg",
     "name": "apple",
     "bin": "brown"
+  },
+  {
+    "img": "https://i5.walmartimages.com/asr/8ac1991d-76cc-4eee-882e-e849c95ec69e.d1d22fa3ed489c363491c41e18e8a538.jpeg",
+    "name": "cereal box",
+    "bin": "green"
+  },
+  {
+    "img": "https://www.brickloot.com/cdn/shop/products/LEGObulkbrickpack.jpg?v=1638405984",
+    "name": "legos (plastic)",
+    "bin": "blue"
+  },
+  {
+    "img": "https://greencitizen.com/wp-content/uploads/2023/07/styrofoam-sheets.jpg",
+    "name": "styrofoam",
+    "bin": "black"
+  },
+  {
+    "img": "https://st2.depositphotos.com/2065221/7830/i/950/depositphotos_78301602-stock-photo-dirty-plastic-food-container.jpg",
+    "name": "food container",
+    "bin": "black"
   }
 ]
